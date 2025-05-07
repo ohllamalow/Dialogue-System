@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System.Collections;
 
 public class DialogueManager : MonoBehaviour
@@ -16,10 +15,18 @@ public class DialogueManager : MonoBehaviour
     [Header("Typing Speed")]
     [Space(10)]
     public float TypingSpeed = 0.02f;
+    private float _currentTypingSpeed;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _defaultBlip;
+    private AudioClip _currentBlip;
+
 
     private DialogueNode _currentNode;
     private int _currentLineIndex = 0;
     private Coroutine _typingCoroutine;
+    private bool _isTyping = false;
 
 
     public void StartDialogue(DialogueNode startingNode)
@@ -31,17 +38,17 @@ public class DialogueManager : MonoBehaviour
     private void LoadNode(DialogueNode node)
     {
         ClearPreviousChoices();
-
         _currentNode = node;
         _currentLineIndex = 0;
 
         _speakerNameText.text = node.speakerName;
 
+        _currentBlip = node.voiceBlip != null ? node.voiceBlip : _defaultBlip;
+
         if (_typingCoroutine != null)
-        {
             StopCoroutine(_typingCoroutine);
-        }
-        _typingCoroutine = StartCoroutine(TypeLine(node.lines[_currentLineIndex]));
+
+        _typingCoroutine = StartCoroutine(TypeLine(_currentNode.lines[_currentLineIndex]));
     }
 
     private void Update()
@@ -56,24 +63,24 @@ public class DialogueManager : MonoBehaviour
 
     private void TryAdvancingDialogue()
     {
-        if (!ChoiceToBeMade())
-         {   
-            _currentLineIndex++;
+        if (_isTyping || ChoiceToBeMade())
+            return;
 
-            if (_currentLineIndex < _currentNode.lines.Count)
-            {
-                if (_typingCoroutine != null)
-                    StopCoroutine(_typingCoroutine);
+        _currentLineIndex++;
 
-                _typingCoroutine = StartCoroutine(TypeLine(_currentNode.lines[_currentLineIndex]));
-            }
-            else
-            {
-                ShowChoices();
-            }
+        if (_currentLineIndex < _currentNode.lines.Count)
+        {
+            if (_typingCoroutine != null)
+                StopCoroutine(_typingCoroutine);
+
+            _typingCoroutine = StartCoroutine(TypeLine(_currentNode.lines[_currentLineIndex]));
         }
-
+        else
+        {
+            ShowChoices();
+        }
     }
+
 
     private void ShowChoices()
     {
@@ -91,16 +98,9 @@ public class DialogueManager : MonoBehaviour
                 DialogueNode next = choice.nextNode;
                 btn.onClick.AddListener(() =>
                 {
-                    Debug.Log("Button clicked!");
-                    Debug.Log("Next node: " + next?.name + " | Current node: " + _currentNode?.name);
-
                     if (next == null)
                     {
                         EndDialogue();
-                    }
-                    else if (next == _currentNode)
-                    {
-                        Debug.LogWarning("You're trying to reload the same node.");
                     }
                     else
                     {
@@ -117,13 +117,24 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator TypeLine(string line)
     {
+        _isTyping = true;
         _dialogueLineText.text = "";
 
         foreach (char letter in line)
         {
             _dialogueLineText.text += letter;
-            yield return new WaitForSeconds(TypingSpeed);
+            if (letter != ' ' && _audioSource && _currentBlip)
+            {
+                _audioSource.pitch = Random.Range(0.95f, 1.05f);
+                _audioSource.PlayOneShot(_currentBlip);
+            }
+
+
+            float delay = (letter == ' ') ? 0f : (Input.GetMouseButton(0) ? TypingSpeed * 0.25f : TypingSpeed);
+            yield return new WaitForSeconds(delay);
         }
+
+        _isTyping = false;
     }
 
     private void ClearPreviousChoices()
@@ -143,7 +154,6 @@ public class DialogueManager : MonoBehaviour
 
     private bool ChoiceToBeMade()
     {
-        Debug.Log(_choicesContainer.childCount > 0);
         return _choicesContainer.childCount > 0;
     }
 }

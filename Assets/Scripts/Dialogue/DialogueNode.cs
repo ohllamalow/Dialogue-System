@@ -15,4 +15,8 @@ public class DialogueNode : ScriptableObject
         public string choice;
         public DialogueNode nextNode;
     }
+
+    [Header("Optional Voice Blip")]
+    public AudioClip voiceBlip;
+
 }
