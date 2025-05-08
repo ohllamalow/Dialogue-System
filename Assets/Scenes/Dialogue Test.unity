@@ -213,8 +213,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1466023365}
   - {fileID: 2100045939}
+  - {fileID: 1466023365}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -818,7 +818,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466023364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -831,7 +831,7 @@ RectTransform:
   m_AnchorMin: {x: 0.105, y: 0.1}
   m_AnchorMax: {x: 0.89, y: 0.43}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.000030517578, y: -0.0000076293945}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466023366
 MonoBehaviour:
@@ -908,11 +908,11 @@ MonoBehaviour:
     ChoiceButtonPrefab: {fileID: 2997037070871052063, guid: 4730d370b5842e54c9f2e250b95d77fa, type: 3}
   _audio:
     AudioSource: {fileID: 519420033}
-    DefaultBlip: {fileID: 8300000, guid: c4868e7d2e96e8e4d87c7c492fc7e08d, type: 3}
+    DefaultBlip: {fileID: 8300000, guid: 49c0bb584aa4b80409b2e98e7a45f061, type: 3}
   _typingSpeed: 0.02
   _baseVolume: 1
-  _fastTypeVolumeMultiplier: 0.7
-  _blipCooldown: 0.001
+  _fastTypeVolumeMultiplier: 0.25
+  _blipCooldown: 0.0025
 --- !u!4 &2003277260
 Transform:
   m_ObjectHideFlags: 0
