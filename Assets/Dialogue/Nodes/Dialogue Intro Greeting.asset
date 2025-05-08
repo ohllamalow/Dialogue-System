@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerName: Elder Oak
   lines:
-  - Hello fool..
+  - ajskl;fjaslk;fj alskjflask jflaskjfkals;jfaskl lsafklas; jflask;jf askl;f jask
+    fajsfl asjlk fsjfk jalfjasfhkf gjashk fgas fgdf jfhasg fs yuawe fas
   - What brings you here??
+  - I live here..so what check it out!
+  - I got a chair...a table...here my Miku figure collection
+  - Anyways wanna trade?
   choices:
   - choice: Trade
     nextNode: {fileID: 11400000, guid: 0caf7b41ed304ca4aa7c44eb0db78e93, type: 2}
   - choice: Goodbye
     nextNode: {fileID: 11400000, guid: 268c5351b35917546bfa781b490486ba, type: 2}
+  voiceBlip: {fileID: 0}
