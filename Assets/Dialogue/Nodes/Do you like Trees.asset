@@ -10,8 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d3176f98664572478847967ab7a7e7b, type: 3}
-  m_Name: Ok
+  m_Name: Do you like Trees
   m_EditorClassIdentifier: 
-  speakerName: 
-  lines: []
-  choices: []
+  speakerName: Henry
+  voiceBlip: {fileID: 0}
+  lines:
+  - Do you like Trees?
+  choices:
+  - choice: Yes
+    nextNode: {fileID: 11400000, guid: 07669ce13b86ff648a575a0dd1766edc, type: 2}
+  - choice: No
+    nextNode: {fileID: 11400000, guid: 3082c0a126075894ca48d994f81ca079, type: 2}

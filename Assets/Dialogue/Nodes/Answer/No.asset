@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d3176f98664572478847967ab7a7e7b, type: 3}
-  m_Name: Greetings
+  m_Name: No
   m_EditorClassIdentifier: 
-  speakerName: 
-  lines: []
+  speakerName: Henry
+  voiceBlip: {fileID: 0}
+  lines:
+  - . . . . oh
   choices: []

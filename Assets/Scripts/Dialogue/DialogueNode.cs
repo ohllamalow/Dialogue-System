@@ -6,6 +6,8 @@ using UnityEngine;
 public class DialogueNode : ScriptableObject
 {
     public string speakerName;
+    [Tooltip("Optional Voice Blip")]
+    public AudioClip voiceBlip;
     [TextArea(3,6)] public List<string> lines;
     public List<DialogueChoice> choices;
 
@@ -15,8 +17,4 @@ public class DialogueNode : ScriptableObject
         public string choice;
         public DialogueNode nextNode;
     }
-
-    [Header("Optional Voice Blip")]
-    public AudioClip voiceBlip;
-
 }

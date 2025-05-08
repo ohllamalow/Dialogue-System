@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3176f98664572478847967ab7a7e7b, type: 3}
+  m_Name: Yes
+  m_EditorClassIdentifier: 
+  speakerName: Henry
+  voiceBlip: {fileID: 0}
+  lines:
+  - Each kind of tree brings its own kind of magic. . .
+  - redwoods reaching into ancient sky, willows weeping beside quiet water, mesquites
+    surviving sun-scorched deserts, and maples blazing in autumn like fire set to
+    the wind.
+  - Together, they make the world feel whole.
+  - ". . . Beneath their gentle rustling and dappled light, trees remember things
+    we\u2019ve long forgotten."
+  - ". . . Beneath their gentle rustling and dappled light, trees remember things
+    we\u2019ve long forgotten."
+  - "Their roots twist deep into the dark, drinking secrets from the soil, while
+    their branches stretch skyward like quiet sentinels watching the slow turning
+    of the world. They will outlive us\u2014but not unkindly."
+  - "They\u2019ll cradle our bones, wear our names in moss, and shelter whatever
+    comes next."
+  choices: []
